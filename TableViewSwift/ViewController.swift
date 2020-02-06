@@ -11,10 +11,10 @@ import UIKit
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tt: UITableView!
-    var arr1 = ["AA", "BB" , "CC", "DD"]
-    var arr2 = ["aa", "bb", "cc" , "dd"]
+    var arr1 = ["AA", "BB" , "CC", "DD","AA", "BB" , "CC", "DD","AA", "BB" , "CC", "DD","AA", "BB" , "CC", "DD"]
+    var arr2 = ["aa", "bb", "cc" , "dd","aa", "bb", "cc" , "dd", "aa", "bb", "cc" , "dd","aa", "bb", "cc" , "dd"]
     
-    var arrimg : [UIImage] = [#imageLiteral(resourceName: "car-logo-22545528"), #imageLiteral(resourceName: "car-logos-mazda") , #imageLiteral(resourceName: "car-logos-mazda"), #imageLiteral(resourceName: "car-logo-with-circle-hand-colorful-logo-vector-22266844")]
+    var arrimg : [UIImage] = [#imageLiteral(resourceName: "car-logo-22545528"), #imageLiteral(resourceName: "car-logos-mazda") , #imageLiteral(resourceName: "car-logos-mazda"), #imageLiteral(resourceName: "car-logo-with-circle-hand-colorful-logo-vector-22266844"),#imageLiteral(resourceName: "car-logo-22545528"), #imageLiteral(resourceName: "car-logos-mazda") , #imageLiteral(resourceName: "car-logos-mazda"), #imageLiteral(resourceName: "car-logo-with-circle-hand-colorful-logo-vector-22266844"),#imageLiteral(resourceName: "car-logo-22545528"), #imageLiteral(resourceName: "car-logos-mazda") , #imageLiteral(resourceName: "car-logos-mazda"), #imageLiteral(resourceName: "car-logo-with-circle-hand-colorful-logo-vector-22266844"),#imageLiteral(resourceName: "car-logo-22545528"), #imageLiteral(resourceName: "car-logos-mazda") , #imageLiteral(resourceName: "car-logos-mazda"), #imageLiteral(resourceName: "car-logo-with-circle-hand-colorful-logo-vector-22266844")]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,6 +54,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             arrimg.remove(at: indexPath.row)
             tt.deleteRows(at: [indexPath], with: .fade)
         }
+    }
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.alpha = 0
+        let transform = CATransform3DTranslate(CATransform3DIdentity, -250, 20, 0)
+        cell.layer.transform = transform
+        UIView.animate(withDuration: 1, animations: {
+            cell.alpha = 1;
+            cell.layer.transform = CATransform3DIdentity
+        })
     }
 
 }
